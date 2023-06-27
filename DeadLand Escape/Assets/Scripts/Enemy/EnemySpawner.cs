@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] spawnPoints;
     public GameObject zombiePrefab;
+    public Text waveText;
+    public Animator anim;
 
     int wave = 1;
     int totalEnemies;
@@ -14,13 +17,18 @@ public class EnemySpawner : MonoBehaviour
     float spawnWaitTime = 2.8f;
     float spawnMinTime = 0.15f;
     float spawnDecrement = 0.25f;
+    float waveCooldown = 0;
+    float waveCooldownOrignal = 25;
     bool enemyCanSpawn = true;
+    bool showedWave = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         totalEnemies = Random.Range((wave * 10), (wave * 10 + 10));
+        waveText.text = "Wave " + 1;
+        anim.SetTrigger("ShowWaveNum");
     }
 
     // Update is called once per frame
@@ -31,12 +39,14 @@ public class EnemySpawner : MonoBehaviour
 
     void setVariables()
     {
-        totalEnemies = Random.Range((wave * 20), (wave * 20 + 10));
+        totalEnemies = Random.Range((wave * 30), (wave * 30 + 10));
         if(spawnWaitTime > spawnMinTime)
         {
             spawnWaitTime -= spawnDecrement;
         }
         wave++;
+        waveText.text = "Wave " + wave.ToString();
+        anim.SetTrigger("ShowWaveNum");
         Debug.Log(wave);
     }
 
@@ -47,8 +57,16 @@ public class EnemySpawner : MonoBehaviour
             spawnEnemy();
         }
         else
-        {  
-            setVariables();
+        {
+            if (waveCooldown >= waveCooldownOrignal)
+            {
+                setVariables();
+                waveCooldown = 0;
+            }
+            else
+            {
+                waveCooldown += Time.deltaTime;
+            }
         }
     }
  
@@ -66,10 +84,21 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    void showWave()
+    {
+
+    }
+
     IEnumerator enemySpawn()
     {
         enemyCanSpawn = false;
         yield return new WaitForSeconds(spawnWaitTime);
         enemyCanSpawn = true;
+    }
+
+    IEnumerator setVariablesCooldown()
+    {
+        yield return new WaitForSeconds(waveCooldown);
+        setVariables();
     }
 }
