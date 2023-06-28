@@ -18,7 +18,6 @@ public class Abilities : MonoBehaviour
     int fireRateLevel = 0;
     int fireRateUpgradeCost = 10;
 
-
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.H))
@@ -52,4 +51,16 @@ public class Abilities : MonoBehaviour
         }
     }
 
+
+    public void buyAbility(string ability)
+    {
+        switch (ability) 
+        {
+            default:
+            case "addFireRate":
+                addFireRate();
+                Debug.Log("added fire rate");
+                break;
+        }
+    }
 }
