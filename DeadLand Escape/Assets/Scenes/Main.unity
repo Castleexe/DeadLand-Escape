@@ -1182,7 +1182,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 904588489222273524, guid: 62169c81b9eb59a4faf739dec5552946, type: 3}
   midPoint: {fileID: 666762679}
   bulletForce: 20
-  coolTime: 0.5
+  coolTime: 0.3
 --- !u!114 &1118288603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,6 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46e604ac7aaad64da766e8770611a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   shooting: {fileID: 1118288602}
 --- !u!1 &1179280434 stripped
 GameObject:
@@ -1240,6 +1241,8 @@ MonoBehaviour:
   hoverBehaviour_Move: 0
   hoverBehaviour_Move_Amount: {x: 0, y: 0}
   triggerMouseOutFuncOnClick: 0
+=======
+>>>>>>> parent of db71410 (Added ability to upgrade fire rate)
 --- !u!114 &1208757007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4659906686977804586, guid: d99f8269ce2c2ae41a0f800f0b7d46ed, type: 3}

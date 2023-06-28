@@ -10,13 +10,18 @@ Ability ideas:
 
  */
 
+
+
 public class Abilities : MonoBehaviour
 {
+<<<<<<< HEAD
     public Shooting shooting;
 
 
     int fireRateLevel = 0;
     int fireRateUpgradeCost = 10;
+=======
+>>>>>>> parent of db71410 (Added ability to upgrade fire rate)
 
     private void Update()
     {
@@ -24,11 +29,6 @@ public class Abilities : MonoBehaviour
         {
             heal();
         }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            addFireRate();
-        }
-
     }
 
 
@@ -43,12 +43,7 @@ public class Abilities : MonoBehaviour
 
     public void addFireRate()
     {
-        if (fireRateLevel < 3 && Coin.Coins > fireRateUpgradeCost)
-        {
-            shooting.coolTime -= 0.1f;
-            Coin.Coins -= fireRateUpgradeCost;
-            fireRateUpgradeCost = fireRateUpgradeCost * 2;
-        }
+
     }
 
 
